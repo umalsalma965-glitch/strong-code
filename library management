@@ -1,0 +1,45 @@
+class Library:
+    def __init__(self):
+        self.books = {}
+
+    def add_book(self, book):
+        self.books[book] = "Available"
+
+    def issue_book(self, book):
+        if book in self.books and self.books[book] == "Available":
+            self.books[book] = "Issued"
+            print(book, "issued successfully.")
+        else:
+            print("Book not available.")
+
+    def return_book(self, book):
+        if book in self.books:
+            self.books[book] = "Available"
+            print(book, "returned successfully.")
+
+    def display_books(self):
+        print("\nLibrary Books")
+        for book, status in self.books.items():
+            print(f"{book} --> {status}")
+
+library = Library()
+
+while True:
+    print("\n1.Add Book")
+    print("2.Issue Book")
+    print("3.Return Book")
+    print("4.Display Books")
+    print("5.Exit")
+
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        library.add_book(input("Book Name: "))
+    elif choice == "2":
+        library.issue_book(input("Book Name: "))
+    elif choice == "3":
+        library.return_book(input("Book Name: "))
+    elif choice == "4":
+        library.display_books()
+    elif choice == "5":
+        break
